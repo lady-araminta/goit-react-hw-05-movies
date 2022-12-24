@@ -1,8 +1,17 @@
 import { fetchMovieDetails, BASE_IMAGE_URL } from 'utils/api';
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Loader } from 'components/Loader/Loader';
+import {
+  Additionally,
+  AdditLink,
+  BackLink,
+  Description,
+  DescriptionItem,
+  DetailsSection,
+  FilmCard,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [info, setInfo] = useState({});
@@ -30,11 +39,11 @@ const MovieDetails = () => {
   const releaseYear = new Date(info.release_date);
 
   return (
-    <div>
-      <Link to={backLinkHref}>Go back</Link>
+    <DetailsSection>
+      <BackLink to={backLinkHref}>Go back</BackLink>
       {info && !loading && (
         <>
-          <div>
+          <FilmCard>
             <img
               src={
                 info.poster_path
@@ -44,35 +53,46 @@ const MovieDetails = () => {
               alt={info.title}
               width="320"
             />
-            <div>
-              <h3>
-                {info.title} ({releaseYear.getFullYear()})
-              </h3>
-              <p>User score:</p>
-              <h5>Overview</h5>
-              <p>{info.overview}</p>
-              <h5>Genres</h5>
-              <p>{genreList.join(', ')}</p>
-            </div>
-          </div>
-          <ul>
+            <Description>
+              <DescriptionItem>
+                <h3>
+                  {info.title} ({releaseYear.getFullYear()})
+                </h3>
+              </DescriptionItem>
+              <DescriptionItem>
+                <h5>User score:</h5>
+                <p>
+                  {info.vote_average}/{info.vote_count}
+                </p>
+              </DescriptionItem>
+              <DescriptionItem>
+                <h5>Overview</h5>
+                <p>{info.overview}</p>
+              </DescriptionItem>
+              <DescriptionItem>
+                <h5>Genres</h5>
+                <p>{genreList.join(', ')}</p>
+              </DescriptionItem>
+            </Description>
+          </FilmCard>
+          <Additionally>
             <li>
-              <Link to="cast" state={{ from: backLinkHref }}>
+              <AdditLink to="cast" state={{ from: backLinkHref }}>
                 Cast
-              </Link>
+              </AdditLink>
             </li>
             <li>
-              <Link to="reviews" state={{ from: backLinkHref }}>
+              <AdditLink to="reviews" state={{ from: backLinkHref }}>
                 Reviews
-              </Link>
+              </AdditLink>
             </li>
-          </ul>
+          </Additionally>
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </>
       )}
-    </div>
+    </DetailsSection>
   );
 };
 

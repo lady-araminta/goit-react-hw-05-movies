@@ -1,19 +1,20 @@
 import { Loader } from 'components/Loader/Loader';
 import { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Container, HeaderLink, HeaderStyled } from './Header.styled';
 
 export const Header = () => {
   return (
-    <>
-      <header>
-        <NavLink to="/" end>
+    <Container>
+      <HeaderStyled>
+        <HeaderLink to="/" end>
           Home
-        </NavLink>
-        <NavLink to="/movies">Movies</NavLink>
-      </header>
+        </HeaderLink>
+        <HeaderLink to="/movies">Movies</HeaderLink>
+      </HeaderStyled>
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-    </>
+    </Container>
   );
 };

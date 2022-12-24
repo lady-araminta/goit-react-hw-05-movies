@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { fetchMoviesByName } from 'utils/api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { Loader } from 'components/Loader/Loader';
+import { Btn, MoviesSection, SearchBar, SearchInput } from './Movies.styled';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -51,16 +52,16 @@ const Movies = () => {
   };
 
   return (
-    <>
+    <MoviesSection>
       <div>
-        <form onSubmit={handleSubmit}>
-          <input name="search" />
-          <button type="submit">Search</button>
-        </form>
+        <SearchBar onSubmit={handleSubmit}>
+          <SearchInput name="search" />
+          <Btn type="submit">Search</Btn>
+        </SearchBar>
       </div>
       {loading && <Loader />}
       {movies.length > 0 && !loading && <MoviesList movies={movies} />}
-    </>
+    </MoviesSection>
   );
 };
 

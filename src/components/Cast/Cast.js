@@ -2,6 +2,7 @@ import { fetchMovieCast, BASE_IMAGE_URL } from 'utils/api';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { CastItem, CastList, StarName } from './Cast.styled';
 
 const Cast = () => {
   const [dataCast, setDataCast] = useState([]);
@@ -17,10 +18,10 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <CastList>
       {dataCast.map(({ id, name, character, profile_path }) => {
         return (
-          <li key={id}>
+          <CastItem key={id}>
             <img
               src={
                 profile_path
@@ -28,16 +29,19 @@ const Cast = () => {
                   : 'https://i.imgur.com/brJrHsa.jpg'
               }
               alt={name}
-              width="96"
             />
-            <div>
-              <p>{name}</p>
-              <p>Character: {character}</p>
-            </div>
-          </li>
+            <StarName>
+              <p>
+                <b>{name}</b>
+              </p>
+              <p>
+                <b>Character:</b> {character}
+              </p>
+            </StarName>
+          </CastItem>
         );
       })}
-    </ul>
+    </CastList>
   );
 };
 

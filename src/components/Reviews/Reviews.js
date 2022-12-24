@@ -2,6 +2,7 @@ import { fetchMovieReviews } from 'utils/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { ReviewCont, ReviewItem } from './Reviews.styled';
 
 const Reviews = () => {
   const [dataReviews, setDataReviews] = useState([]);
@@ -19,16 +20,16 @@ const Reviews = () => {
     return <p>We don't have any reviews for this movie</p>;
   } else {
     return (
-      <ul>
+      <ReviewCont>
         {dataReviews.map(({ author, content, id }) => {
           return (
-            <li key={id}>
+            <ReviewItem key={id}>
               <h5>Author: {author}</h5>
               <p>{content}</p>
-            </li>
+            </ReviewItem>
           );
         })}
-      </ul>
+      </ReviewCont>
     );
   }
 };

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { Loader } from 'components/Loader/Loader';
+import { Main, MainTitle } from './Home.styled';
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -22,11 +23,11 @@ const Home = () => {
   }, []);
 
   return (
-    <section>
-      <h2>Trendings today</h2>
+    <Main>
+      <MainTitle>Trendings today</MainTitle>
       {loading && <Loader />}
       {data.length > 0 && !loading && <MoviesList movies={data} />}
-    </section>
+    </Main>
   );
 };
 

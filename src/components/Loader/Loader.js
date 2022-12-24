@@ -1,9 +1,10 @@
 import { Vortex } from 'react-loader-spinner';
+import { LoaderCont } from './Loader.styled';
 
 export const Loader = () => {
   return (
-    <div role="alert">
+    <LoaderCont role="alert">
       <Vortex height="100" width="100" ariaLabel="vortex-loading" />
-    </div>
+    </LoaderCont>
   );
 };
