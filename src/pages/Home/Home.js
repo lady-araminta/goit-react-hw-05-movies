@@ -1,7 +1,7 @@
-import { fetchTrendingMovies } from 'components/utils/api';
+import { fetchTrendingMovies } from 'utils/api';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
 export const Home = () => {
   const [data, setData] = useState([]);
@@ -11,19 +11,15 @@ export const Home = () => {
         setData(results);
       })
       .catch(error => {
+        setData([]);
         return toast('Something went wrong! Please retry!');
       });
   }, []);
 
   return (
-    <ul>
-      {data.map(item => {
-        return (
-          <li key={item.id}>
-            <Link to={`/movies/${item.id}`}>{item.title}</Link>
-          </li>
-        );
-      })}
-    </ul>
+    <section>
+      <h2>Trendings today</h2>
+      {data.length > 0 && <MoviesList movies={data} />}
+    </section>
   );
 };

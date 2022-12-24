@@ -1,9 +1,7 @@
-import { fetchMovieCast } from 'components/utils/api';
+import { fetchMovieCast, BASE_IMAGE_URL } from 'utils/api';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
-
-const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
 export const Cast = () => {
   const [dataCast, setDataCast] = useState([]);
@@ -24,7 +22,11 @@ export const Cast = () => {
         return (
           <li key={id}>
             <img
-              src={`${BASE_IMAGE_URL}${profile_path}`}
+              src={
+                profile_path
+                  ? `${BASE_IMAGE_URL}${profile_path}`
+                  : 'https://i.imgur.com/brJrHsa.jpg'
+              }
               alt={name}
               width="96"
             />

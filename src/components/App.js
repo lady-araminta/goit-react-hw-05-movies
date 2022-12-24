@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { GlobalStyle } from './GlobalStyle';
-import { Home } from './Home/Home';
-import { MovieDetails } from './MovieDetails/MovieDetails';
-import { Movies } from './Movies/Movies';
+import { Header } from './Header/Header';
+import { Home } from 'pages/Home/Home';
+import { Movies } from 'pages/Movies/Movies';
+import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
 import { Cast } from './Cast/Cast';
 import { Reviews } from './Reviews/Reviews';
-import { Header } from './Header/Header';
 
 export const App = () => {
   return (

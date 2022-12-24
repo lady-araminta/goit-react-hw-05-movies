@@ -1,4 +1,4 @@
-import { fetchMovieReviews } from 'components/utils/api';
+import { fetchMovieReviews } from 'utils/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
