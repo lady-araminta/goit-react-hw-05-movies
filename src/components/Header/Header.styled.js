@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
-  outline: 1px solid red;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
