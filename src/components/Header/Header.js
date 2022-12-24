@@ -1,3 +1,5 @@
+import { Loader } from 'components/Loader/Loader';
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 export const Header = () => {
@@ -9,7 +11,9 @@ export const Header = () => {
         </NavLink>
         <NavLink to="/movies">Movies</NavLink>
       </header>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

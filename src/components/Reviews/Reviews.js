@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [dataReviews, setDataReviews] = useState([]);
   const { movieId } = useParams();
   useEffect(() => {
@@ -32,3 +32,5 @@ export const Reviews = () => {
     );
   }
 };
+
+export default Reviews;
